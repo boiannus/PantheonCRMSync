@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="OS_FakturaPost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CRMDocumentId" Type="varchar" Mode="In" />
+          <Parameter Name="DocType" Type="varchar" Mode="In" />
+          <Parameter Name="Date" Type="varchar" Mode="In" />
+          <Parameter Name="Receiver" Type="varchar" Mode="In" />
+          <Parameter Name="Currency" Type="varchar" Mode="In" />
+          <Parameter Name="FXRate" Type="decimal" Mode="In" />
+          <Parameter Name="Doc1" Type="varchar" Mode="In" />
+          <Parameter Name="DateDoc1" Type="varchar" Mode="In" />
+          <Parameter Name="DateVAT" Type="varchar" Mode="In" />
+          <Parameter Name="DateDue" Type="varchar" Mode="In" />
+          <Parameter Name="error" Type="varchar" Mode="InOut" />
+          <Parameter Name="kljuc" Type="char" Mode="InOut" />
+        </Function>
+        <Function Name="OS_FakturaPozPost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DocumentId" Type="varchar" Mode="In" />
+          <Parameter Name="No" Type="int" Mode="In" />
+          <Parameter Name="Ident" Type="varchar" Mode="In" />
+          <Parameter Name="Qty" Type="decimal" Mode="In" />
+          <Parameter Name="Price" Type="decimal" Mode="In" />
+          <Parameter Name="Dept" Type="varchar" Mode="In" />
+          <Parameter Name="CostDrv" Type="varchar" Mode="In" />
+          <Parameter Name="error" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="OS_RacunDobavljacaPost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CRMDocumentId" Type="varchar" Mode="In" />
+          <Parameter Name="DocType" Type="varchar" Mode="In" />
+          <Parameter Name="Date" Type="varchar" Mode="In" />
+          <Parameter Name="Issuer" Type="varchar" Mode="In" />
+          <Parameter Name="Currency" Type="varchar" Mode="In" />
+          <Parameter Name="FXRate" Type="decimal" Mode="In" />
+          <Parameter Name="Doc1" Type="varchar" Mode="In" />
+          <Parameter Name="DateDoc1" Type="varchar" Mode="In" />
+          <Parameter Name="DateVAT" Type="varchar" Mode="In" />
+          <Parameter Name="DateDue" Type="varchar" Mode="In" />
+          <Parameter Name="error" Type="varchar" Mode="InOut" />
+          <Parameter Name="kljuc" Type="char" Mode="InOut" />
+        </Function>
+        <Function Name="OS_RacunDobavljacaPozPost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DocumentId" Type="varchar" Mode="In" />
+          <Parameter Name="No" Type="int" Mode="In" />
+          <Parameter Name="Ident" Type="varchar" Mode="In" />
+          <Parameter Name="Qty" Type="decimal" Mode="In" />
+          <Parameter Name="Price" Type="decimal" Mode="In" />
+          <Parameter Name="Dept" Type="varchar" Mode="In" />
+          <Parameter Name="CostDrv" Type="varchar" Mode="In" />
+          <Parameter Name="error" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="OS_StrnPost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CostDrv" Type="varchar" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Classif" Type="varchar" Mode="In" />
+          <Parameter Name="Consignee" Type="varchar" Mode="In" />
+          <Parameter Name="Dept" Type="varchar" Mode="In" />
+          <Parameter Name="QId" Type="int" Mode="InOut" />
+          <Parameter Name="error" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="OS_SubjektPost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubjectId" Type="varchar" Mode="In" />
+          <Parameter Name="Name2" Type="varchar" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+          <Parameter Name="Post" Type="varchar" Mode="In" />
+          <Parameter Name="Country" Type="varchar" Mode="In" />
+          <Parameter Name="Code" Type="varchar" Mode="In" />
+          <Parameter Name="RegNo" Type="varchar" Mode="In" />
+          <Parameter Name="Buyer" Type="char" Mode="In" />
+          <Parameter Name="WayOfSale" Type="char" Mode="In" />
+          <Parameter Name="Currency" Type="varchar" Mode="In" />
+          <Parameter Name="Supplier" Type="char" Mode="In" />
+          <Parameter Name="SuppSaleMet" Type="char" Mode="In" />
+          <Parameter Name="SuppCurr" Type="varchar" Mode="In" />
+          <Parameter Name="QId" Type="int" Mode="InOut" />
+          <Parameter Name="error" Type="varchar" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="DBModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="OS_StrnPost">
+            <Parameter Name="CostDrv" Mode="In" Type="String" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Classif" Mode="In" Type="String" />
+            <Parameter Name="Consignee" Mode="In" Type="String" />
+            <Parameter Name="Dept" Mode="In" Type="String" />
+            <Parameter Name="QId" Mode="InOut" Type="Int32" />
+            <Parameter Name="error" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="OS_SubjektPost">
+            <Parameter Name="SubjectId" Mode="In" Type="String" />
+            <Parameter Name="Name2" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Post" Mode="In" Type="String" />
+            <Parameter Name="Country" Mode="In" Type="String" />
+            <Parameter Name="Code" Mode="In" Type="String" />
+            <Parameter Name="RegNo" Mode="In" Type="String" />
+            <Parameter Name="Buyer" Mode="In" Type="String" />
+            <Parameter Name="WayOfSale" Mode="In" Type="String" />
+            <Parameter Name="Currency" Mode="In" Type="String" />
+            <Parameter Name="Supplier" Mode="In" Type="String" />
+            <Parameter Name="SuppSaleMet" Mode="In" Type="String" />
+            <Parameter Name="SuppCurr" Mode="In" Type="String" />
+            <Parameter Name="QId" Mode="InOut" Type="Int32" />
+            <Parameter Name="error" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="OS_FakturaPost">
+            <Parameter Name="CRMDocumentId" Mode="In" Type="String" />
+            <Parameter Name="DocType" Mode="In" Type="String" />
+            <Parameter Name="Date" Mode="In" Type="String" />
+            <Parameter Name="Receiver" Mode="In" Type="String" />
+            <Parameter Name="Currency" Mode="In" Type="String" />
+            <Parameter Name="FXRate" Mode="In" Type="Decimal" />
+            <Parameter Name="Doc1" Mode="In" Type="String" />
+            <Parameter Name="DateDoc1" Mode="In" Type="String" />
+            <Parameter Name="DateVAT" Mode="In" Type="String" />
+            <Parameter Name="DateDue" Mode="In" Type="String" />
+            <Parameter Name="error" Mode="InOut" Type="String" />
+            <Parameter Name="kljuc" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="OS_RacunDobavljacaPost">
+            <Parameter Name="CRMDocumentId" Mode="In" Type="String" />
+            <Parameter Name="DocType" Mode="In" Type="String" />
+            <Parameter Name="Date" Mode="In" Type="String" />
+            <Parameter Name="Issuer" Mode="In" Type="String" />
+            <Parameter Name="Currency" Mode="In" Type="String" />
+            <Parameter Name="FXRate" Mode="In" Type="Decimal" />
+            <Parameter Name="Doc1" Mode="In" Type="String" />
+            <Parameter Name="DateDoc1" Mode="In" Type="String" />
+            <Parameter Name="DateVAT" Mode="In" Type="String" />
+            <Parameter Name="DateDue" Mode="In" Type="String" />
+            <Parameter Name="error" Mode="InOut" Type="String" />
+            <Parameter Name="kljuc" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="OS_FakturaPozPost">
+            <Parameter Name="DocumentId" Mode="In" Type="String" />
+            <Parameter Name="No" Mode="In" Type="Int32" />
+            <Parameter Name="Ident" Mode="In" Type="String" />
+            <Parameter Name="Qty" Mode="In" Type="Decimal" />
+            <Parameter Name="Price" Mode="In" Type="Decimal" />
+            <Parameter Name="Dept" Mode="In" Type="String" />
+            <Parameter Name="CostDrv" Mode="In" Type="String" />
+            <Parameter Name="error" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="OS_RacunDobavljacaPozPost">
+            <Parameter Name="DocumentId" Mode="In" Type="String" />
+            <Parameter Name="No" Mode="In" Type="Int32" />
+            <Parameter Name="Ident" Mode="In" Type="String" />
+            <Parameter Name="Qty" Mode="In" Type="Decimal" />
+            <Parameter Name="Price" Mode="In" Type="Decimal" />
+            <Parameter Name="Dept" Mode="In" Type="String" />
+            <Parameter Name="CostDrv" Mode="In" Type="String" />
+            <Parameter Name="error" Mode="InOut" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="DBEntities" >
+          <FunctionImportMapping FunctionImportName="OS_StrnPost" FunctionName="DBModel.Store.OS_StrnPost" />
+          <FunctionImportMapping FunctionImportName="OS_SubjektPost" FunctionName="DBModel.Store.OS_SubjektPost" />
+          <FunctionImportMapping FunctionImportName="OS_FakturaPost" FunctionName="DBModel.Store.OS_FakturaPost" />
+          <FunctionImportMapping FunctionImportName="OS_RacunDobavljacaPost" FunctionName="DBModel.Store.OS_RacunDobavljacaPost" />
+          <FunctionImportMapping FunctionImportName="OS_FakturaPozPost" FunctionName="DBModel.Store.OS_FakturaPozPost" />
+          <FunctionImportMapping FunctionImportName="OS_RacunDobavljacaPozPost" FunctionName="DBModel.Store.OS_RacunDobavljacaPozPost" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
