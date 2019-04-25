@@ -53,7 +53,167 @@ namespace PantheonCRMSync.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OS_StrnPost", costDrvParameter, nameParameter, classifParameter, consigneeParameter, deptParameter, qId, error);
         }
     
-        public virtual int OS_SubjektPost(string subjectId, string name2, string address, string post, string country, string code, string regNo, string buyer, string wayOfSale, string currency, string supplier, string suppSaleMet, string suppCurr, ObjectParameter qId, ObjectParameter error)
+        public virtual int OS_FakturaPozPost(string documentId, Nullable<int> no, string ident, Nullable<decimal> qty, Nullable<decimal> price, string costDrv, ObjectParameter error)
+        {
+            var documentIdParameter = documentId != null ?
+                new ObjectParameter("DocumentId", documentId) :
+                new ObjectParameter("DocumentId", typeof(string));
+    
+            var noParameter = no.HasValue ?
+                new ObjectParameter("No", no) :
+                new ObjectParameter("No", typeof(int));
+    
+            var identParameter = ident != null ?
+                new ObjectParameter("Ident", ident) :
+                new ObjectParameter("Ident", typeof(string));
+    
+            var qtyParameter = qty.HasValue ?
+                new ObjectParameter("Qty", qty) :
+                new ObjectParameter("Qty", typeof(decimal));
+    
+            var priceParameter = price.HasValue ?
+                new ObjectParameter("Price", price) :
+                new ObjectParameter("Price", typeof(decimal));
+    
+            var costDrvParameter = costDrv != null ?
+                new ObjectParameter("CostDrv", costDrv) :
+                new ObjectParameter("CostDrv", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OS_FakturaPozPost", documentIdParameter, noParameter, identParameter, qtyParameter, priceParameter, costDrvParameter, error);
+        }
+    
+        public virtual int OS_RacunDobavljacaPozPost(string documentId, Nullable<int> no, string ident, Nullable<decimal> qty, Nullable<decimal> price, string costDrv, ObjectParameter error)
+        {
+            var documentIdParameter = documentId != null ?
+                new ObjectParameter("DocumentId", documentId) :
+                new ObjectParameter("DocumentId", typeof(string));
+    
+            var noParameter = no.HasValue ?
+                new ObjectParameter("No", no) :
+                new ObjectParameter("No", typeof(int));
+    
+            var identParameter = ident != null ?
+                new ObjectParameter("Ident", ident) :
+                new ObjectParameter("Ident", typeof(string));
+    
+            var qtyParameter = qty.HasValue ?
+                new ObjectParameter("Qty", qty) :
+                new ObjectParameter("Qty", typeof(decimal));
+    
+            var priceParameter = price.HasValue ?
+                new ObjectParameter("Price", price) :
+                new ObjectParameter("Price", typeof(decimal));
+    
+            var costDrvParameter = costDrv != null ?
+                new ObjectParameter("CostDrv", costDrv) :
+                new ObjectParameter("CostDrv", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OS_RacunDobavljacaPozPost", documentIdParameter, noParameter, identParameter, qtyParameter, priceParameter, costDrvParameter, error);
+        }
+    
+        public virtual int OS_FakturaPost(string cRMDocumentId, string docType, string date, string receiver, string currency, Nullable<decimal> fXRate, string doc1, string dateDoc1, string dateVAT, string dateDue, string statement, Nullable<int> userId, ObjectParameter error, ObjectParameter kljuc)
+        {
+            var cRMDocumentIdParameter = cRMDocumentId != null ?
+                new ObjectParameter("CRMDocumentId", cRMDocumentId) :
+                new ObjectParameter("CRMDocumentId", typeof(string));
+    
+            var docTypeParameter = docType != null ?
+                new ObjectParameter("DocType", docType) :
+                new ObjectParameter("DocType", typeof(string));
+    
+            var dateParameter = date != null ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(string));
+    
+            var receiverParameter = receiver != null ?
+                new ObjectParameter("Receiver", receiver) :
+                new ObjectParameter("Receiver", typeof(string));
+    
+            var currencyParameter = currency != null ?
+                new ObjectParameter("Currency", currency) :
+                new ObjectParameter("Currency", typeof(string));
+    
+            var fXRateParameter = fXRate.HasValue ?
+                new ObjectParameter("FXRate", fXRate) :
+                new ObjectParameter("FXRate", typeof(decimal));
+    
+            var doc1Parameter = doc1 != null ?
+                new ObjectParameter("Doc1", doc1) :
+                new ObjectParameter("Doc1", typeof(string));
+    
+            var dateDoc1Parameter = dateDoc1 != null ?
+                new ObjectParameter("DateDoc1", dateDoc1) :
+                new ObjectParameter("DateDoc1", typeof(string));
+    
+            var dateVATParameter = dateVAT != null ?
+                new ObjectParameter("DateVAT", dateVAT) :
+                new ObjectParameter("DateVAT", typeof(string));
+    
+            var dateDueParameter = dateDue != null ?
+                new ObjectParameter("DateDue", dateDue) :
+                new ObjectParameter("DateDue", typeof(string));
+    
+            var statementParameter = statement != null ?
+                new ObjectParameter("Statement", statement) :
+                new ObjectParameter("Statement", typeof(string));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OS_FakturaPost", cRMDocumentIdParameter, docTypeParameter, dateParameter, receiverParameter, currencyParameter, fXRateParameter, doc1Parameter, dateDoc1Parameter, dateVATParameter, dateDueParameter, statementParameter, userIdParameter, error, kljuc);
+        }
+    
+        public virtual int OS_RacunDobavljacaPost(string cRMDocumentId, string docType, string date, string issuer, string currency, Nullable<decimal> fXRate, string doc1, string dateDoc1, string dateVAT, string dateDue, Nullable<int> userId, ObjectParameter error, ObjectParameter kljuc)
+        {
+            var cRMDocumentIdParameter = cRMDocumentId != null ?
+                new ObjectParameter("CRMDocumentId", cRMDocumentId) :
+                new ObjectParameter("CRMDocumentId", typeof(string));
+    
+            var docTypeParameter = docType != null ?
+                new ObjectParameter("DocType", docType) :
+                new ObjectParameter("DocType", typeof(string));
+    
+            var dateParameter = date != null ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(string));
+    
+            var issuerParameter = issuer != null ?
+                new ObjectParameter("Issuer", issuer) :
+                new ObjectParameter("Issuer", typeof(string));
+    
+            var currencyParameter = currency != null ?
+                new ObjectParameter("Currency", currency) :
+                new ObjectParameter("Currency", typeof(string));
+    
+            var fXRateParameter = fXRate.HasValue ?
+                new ObjectParameter("FXRate", fXRate) :
+                new ObjectParameter("FXRate", typeof(decimal));
+    
+            var doc1Parameter = doc1 != null ?
+                new ObjectParameter("Doc1", doc1) :
+                new ObjectParameter("Doc1", typeof(string));
+    
+            var dateDoc1Parameter = dateDoc1 != null ?
+                new ObjectParameter("DateDoc1", dateDoc1) :
+                new ObjectParameter("DateDoc1", typeof(string));
+    
+            var dateVATParameter = dateVAT != null ?
+                new ObjectParameter("DateVAT", dateVAT) :
+                new ObjectParameter("DateVAT", typeof(string));
+    
+            var dateDueParameter = dateDue != null ?
+                new ObjectParameter("DateDue", dateDue) :
+                new ObjectParameter("DateDue", typeof(string));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OS_RacunDobavljacaPost", cRMDocumentIdParameter, docTypeParameter, dateParameter, issuerParameter, currencyParameter, fXRateParameter, doc1Parameter, dateDoc1Parameter, dateVATParameter, dateDueParameter, userIdParameter, error, kljuc);
+        }
+    
+        public virtual int OS_SubjektPost(string subjectId, string name2, string address, string post, string country, string code, string regNo, string buyer, string wayOfSale, string currency, string supplier, string suppSaleMet, string suppCurr, Nullable<int> clerk, Nullable<int> suppClerk, ObjectParameter qId, ObjectParameter error)
         {
             var subjectIdParameter = subjectId != null ?
                 new ObjectParameter("SubjectId", subjectId) :
@@ -107,163 +267,15 @@ namespace PantheonCRMSync.Data
                 new ObjectParameter("SuppCurr", suppCurr) :
                 new ObjectParameter("SuppCurr", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OS_SubjektPost", subjectIdParameter, name2Parameter, addressParameter, postParameter, countryParameter, codeParameter, regNoParameter, buyerParameter, wayOfSaleParameter, currencyParameter, supplierParameter, suppSaleMetParameter, suppCurrParameter, qId, error);
-        }
+            var clerkParameter = clerk.HasValue ?
+                new ObjectParameter("Clerk", clerk) :
+                new ObjectParameter("Clerk", typeof(int));
     
-        public virtual int OS_FakturaPost(string cRMDocumentId, string docType, string date, string receiver, string currency, Nullable<decimal> fXRate, string doc1, string dateDoc1, string dateVAT, string dateDue, ObjectParameter error, ObjectParameter kljuc)
-        {
-            var cRMDocumentIdParameter = cRMDocumentId != null ?
-                new ObjectParameter("CRMDocumentId", cRMDocumentId) :
-                new ObjectParameter("CRMDocumentId", typeof(string));
+            var suppClerkParameter = suppClerk.HasValue ?
+                new ObjectParameter("SuppClerk", suppClerk) :
+                new ObjectParameter("SuppClerk", typeof(int));
     
-            var docTypeParameter = docType != null ?
-                new ObjectParameter("DocType", docType) :
-                new ObjectParameter("DocType", typeof(string));
-    
-            var dateParameter = date != null ?
-                new ObjectParameter("Date", date) :
-                new ObjectParameter("Date", typeof(string));
-    
-            var receiverParameter = receiver != null ?
-                new ObjectParameter("Receiver", receiver) :
-                new ObjectParameter("Receiver", typeof(string));
-    
-            var currencyParameter = currency != null ?
-                new ObjectParameter("Currency", currency) :
-                new ObjectParameter("Currency", typeof(string));
-    
-            var fXRateParameter = fXRate.HasValue ?
-                new ObjectParameter("FXRate", fXRate) :
-                new ObjectParameter("FXRate", typeof(decimal));
-    
-            var doc1Parameter = doc1 != null ?
-                new ObjectParameter("Doc1", doc1) :
-                new ObjectParameter("Doc1", typeof(string));
-    
-            var dateDoc1Parameter = dateDoc1 != null ?
-                new ObjectParameter("DateDoc1", dateDoc1) :
-                new ObjectParameter("DateDoc1", typeof(string));
-    
-            var dateVATParameter = dateVAT != null ?
-                new ObjectParameter("DateVAT", dateVAT) :
-                new ObjectParameter("DateVAT", typeof(string));
-    
-            var dateDueParameter = dateDue != null ?
-                new ObjectParameter("DateDue", dateDue) :
-                new ObjectParameter("DateDue", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OS_FakturaPost", cRMDocumentIdParameter, docTypeParameter, dateParameter, receiverParameter, currencyParameter, fXRateParameter, doc1Parameter, dateDoc1Parameter, dateVATParameter, dateDueParameter, error, kljuc);
-        }
-    
-        public virtual int OS_RacunDobavljacaPost(string cRMDocumentId, string docType, string date, string issuer, string currency, Nullable<decimal> fXRate, string doc1, string dateDoc1, string dateVAT, string dateDue, ObjectParameter error, ObjectParameter kljuc)
-        {
-            var cRMDocumentIdParameter = cRMDocumentId != null ?
-                new ObjectParameter("CRMDocumentId", cRMDocumentId) :
-                new ObjectParameter("CRMDocumentId", typeof(string));
-    
-            var docTypeParameter = docType != null ?
-                new ObjectParameter("DocType", docType) :
-                new ObjectParameter("DocType", typeof(string));
-    
-            var dateParameter = date != null ?
-                new ObjectParameter("Date", date) :
-                new ObjectParameter("Date", typeof(string));
-    
-            var issuerParameter = issuer != null ?
-                new ObjectParameter("Issuer", issuer) :
-                new ObjectParameter("Issuer", typeof(string));
-    
-            var currencyParameter = currency != null ?
-                new ObjectParameter("Currency", currency) :
-                new ObjectParameter("Currency", typeof(string));
-    
-            var fXRateParameter = fXRate.HasValue ?
-                new ObjectParameter("FXRate", fXRate) :
-                new ObjectParameter("FXRate", typeof(decimal));
-    
-            var doc1Parameter = doc1 != null ?
-                new ObjectParameter("Doc1", doc1) :
-                new ObjectParameter("Doc1", typeof(string));
-    
-            var dateDoc1Parameter = dateDoc1 != null ?
-                new ObjectParameter("DateDoc1", dateDoc1) :
-                new ObjectParameter("DateDoc1", typeof(string));
-    
-            var dateVATParameter = dateVAT != null ?
-                new ObjectParameter("DateVAT", dateVAT) :
-                new ObjectParameter("DateVAT", typeof(string));
-    
-            var dateDueParameter = dateDue != null ?
-                new ObjectParameter("DateDue", dateDue) :
-                new ObjectParameter("DateDue", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OS_RacunDobavljacaPost", cRMDocumentIdParameter, docTypeParameter, dateParameter, issuerParameter, currencyParameter, fXRateParameter, doc1Parameter, dateDoc1Parameter, dateVATParameter, dateDueParameter, error, kljuc);
-        }
-    
-        public virtual int OS_FakturaPozPost(string documentId, Nullable<int> no, string ident, Nullable<decimal> qty, Nullable<decimal> price, string dept, string costDrv, ObjectParameter error)
-        {
-            var documentIdParameter = documentId != null ?
-                new ObjectParameter("DocumentId", documentId) :
-                new ObjectParameter("DocumentId", typeof(string));
-    
-            var noParameter = no.HasValue ?
-                new ObjectParameter("No", no) :
-                new ObjectParameter("No", typeof(int));
-    
-            var identParameter = ident != null ?
-                new ObjectParameter("Ident", ident) :
-                new ObjectParameter("Ident", typeof(string));
-    
-            var qtyParameter = qty.HasValue ?
-                new ObjectParameter("Qty", qty) :
-                new ObjectParameter("Qty", typeof(decimal));
-    
-            var priceParameter = price.HasValue ?
-                new ObjectParameter("Price", price) :
-                new ObjectParameter("Price", typeof(decimal));
-    
-            var deptParameter = dept != null ?
-                new ObjectParameter("Dept", dept) :
-                new ObjectParameter("Dept", typeof(string));
-    
-            var costDrvParameter = costDrv != null ?
-                new ObjectParameter("CostDrv", costDrv) :
-                new ObjectParameter("CostDrv", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OS_FakturaPozPost", documentIdParameter, noParameter, identParameter, qtyParameter, priceParameter, deptParameter, costDrvParameter, error);
-        }
-    
-        public virtual int OS_RacunDobavljacaPozPost(string documentId, Nullable<int> no, string ident, Nullable<decimal> qty, Nullable<decimal> price, string dept, string costDrv, ObjectParameter error)
-        {
-            var documentIdParameter = documentId != null ?
-                new ObjectParameter("DocumentId", documentId) :
-                new ObjectParameter("DocumentId", typeof(string));
-    
-            var noParameter = no.HasValue ?
-                new ObjectParameter("No", no) :
-                new ObjectParameter("No", typeof(int));
-    
-            var identParameter = ident != null ?
-                new ObjectParameter("Ident", ident) :
-                new ObjectParameter("Ident", typeof(string));
-    
-            var qtyParameter = qty.HasValue ?
-                new ObjectParameter("Qty", qty) :
-                new ObjectParameter("Qty", typeof(decimal));
-    
-            var priceParameter = price.HasValue ?
-                new ObjectParameter("Price", price) :
-                new ObjectParameter("Price", typeof(decimal));
-    
-            var deptParameter = dept != null ?
-                new ObjectParameter("Dept", dept) :
-                new ObjectParameter("Dept", typeof(string));
-    
-            var costDrvParameter = costDrv != null ?
-                new ObjectParameter("CostDrv", costDrv) :
-                new ObjectParameter("CostDrv", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OS_RacunDobavljacaPozPost", documentIdParameter, noParameter, identParameter, qtyParameter, priceParameter, deptParameter, costDrvParameter, error);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OS_SubjektPost", subjectIdParameter, name2Parameter, addressParameter, postParameter, countryParameter, codeParameter, regNoParameter, buyerParameter, wayOfSaleParameter, currencyParameter, supplierParameter, suppSaleMetParameter, suppCurrParameter, clerkParameter, suppClerkParameter, qId, error);
         }
     }
 }

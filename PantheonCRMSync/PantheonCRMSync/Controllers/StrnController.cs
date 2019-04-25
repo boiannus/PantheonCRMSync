@@ -1,6 +1,7 @@
 ﻿using Helpers;
 using PantheonCRMSync.Data;
 using PantheonCRMSync.Models;
+using System;
 using System.Data.Entity.Core.Objects;
 using System.Web.Http;
 
@@ -11,8 +12,9 @@ namespace PantheonCRMSync.Controllers
         string connString = ConnectionHelper.GetSqlConnectionString();
 
         [HttpPost]
-        public int StrnPost([FromBody]Strn s)
+        public Response StrnPost([FromBody]Strn s)
         {
+            Response response = new Response();
             using (DBEntities db = new DBEntities())
             {
                 try
@@ -23,13 +25,34 @@ namespace PantheonCRMSync.Controllers
                     ObjectParameter error = new ObjectParameter("error", typeof(string));
 
                     db.OS_StrnPost(s.CostDrv, s.CostName, s.Classif, s.Consignee, s.Dept, qid, error);
-                    return (int)qid.Value;
+                    if (error.Value.ToString() == "OK")
+                    {
+                        response.Id = qid.Value.ToString();
+                        response.Status = "OK";
+                        response.Opis = "";
+                    }
+                    else if (error.Value.ToString() == "Duplikat")
+                    {
+                        response.Id = qid.Value.ToString();
+                        response.Status = "Duplikat";
+                        response.Opis = "";
+                    }
+                    else
+                    {
+                        response.Id = "";
+                        response.Status = "ERROR";
+                        response.Opis = error.Value.ToString();
+                    }
                 }
-                catch
+                catch (Exception ex)
                 {
-                    return 0;
+                    response.Id = "";
+                    response.Status = "ERROR";
+                    response.Opis = ex.Message.ToString();
                 }
             }
+
+            return response;
         }
     }
 }

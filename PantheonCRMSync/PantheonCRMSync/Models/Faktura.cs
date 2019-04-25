@@ -14,6 +14,8 @@ namespace PantheonCRMSync.Models
         public string DateDoc1 { get; set; }
         public string DateVAT { get; set; }
         public string DateDue { get; set; }
+        public string Statement { get; set; }
+        public int UserId { get; set; }
         public List<FakturaPoz> Pozicije { get; set; }
     }
 
@@ -23,7 +25,6 @@ namespace PantheonCRMSync.Models
         public string Ident { get; set; }
         public decimal Qty { get; set; }
         public decimal Price { get; set; }
-        public string Dept { get; set; }
         public string CostDrv { get; set; } 
     }
 }

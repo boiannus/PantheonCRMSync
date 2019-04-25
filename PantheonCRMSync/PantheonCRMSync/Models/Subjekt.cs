@@ -15,5 +15,7 @@
         public string Supplier { get; set; }
         public string SuppSaleMet { get; set; }
         public string SuppCurr { get; set; }
+        public int Clerk { get; set; }        
+        public int SuppClerk { get; set; }        
     }
 }

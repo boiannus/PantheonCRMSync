@@ -16,6 +16,8 @@
           <Parameter Name="DateDoc1" Type="varchar" Mode="In" />
           <Parameter Name="DateVAT" Type="varchar" Mode="In" />
           <Parameter Name="DateDue" Type="varchar" Mode="In" />
+          <Parameter Name="Statement" Type="varchar" Mode="In" />
+          <Parameter Name="UserId" Type="int" Mode="In" />
           <Parameter Name="error" Type="varchar" Mode="InOut" />
           <Parameter Name="kljuc" Type="char" Mode="InOut" />
         </Function>
@@ -25,7 +27,6 @@
           <Parameter Name="Ident" Type="varchar" Mode="In" />
           <Parameter Name="Qty" Type="decimal" Mode="In" />
           <Parameter Name="Price" Type="decimal" Mode="In" />
-          <Parameter Name="Dept" Type="varchar" Mode="In" />
           <Parameter Name="CostDrv" Type="varchar" Mode="In" />
           <Parameter Name="error" Type="varchar" Mode="InOut" />
         </Function>
@@ -40,6 +41,7 @@
           <Parameter Name="DateDoc1" Type="varchar" Mode="In" />
           <Parameter Name="DateVAT" Type="varchar" Mode="In" />
           <Parameter Name="DateDue" Type="varchar" Mode="In" />
+          <Parameter Name="UserId" Type="int" Mode="In" />
           <Parameter Name="error" Type="varchar" Mode="InOut" />
           <Parameter Name="kljuc" Type="char" Mode="InOut" />
         </Function>
@@ -49,7 +51,6 @@
           <Parameter Name="Ident" Type="varchar" Mode="In" />
           <Parameter Name="Qty" Type="decimal" Mode="In" />
           <Parameter Name="Price" Type="decimal" Mode="In" />
-          <Parameter Name="Dept" Type="varchar" Mode="In" />
           <Parameter Name="CostDrv" Type="varchar" Mode="In" />
           <Parameter Name="error" Type="varchar" Mode="InOut" />
         </Function>
@@ -76,6 +77,8 @@
           <Parameter Name="Supplier" Type="char" Mode="In" />
           <Parameter Name="SuppSaleMet" Type="char" Mode="In" />
           <Parameter Name="SuppCurr" Type="varchar" Mode="In" />
+          <Parameter Name="Clerk" Type="int" Mode="In" />
+          <Parameter Name="SuppClerk" Type="int" Mode="In" />
           <Parameter Name="QId" Type="int" Mode="InOut" />
           <Parameter Name="error" Type="varchar" Mode="InOut" />
         </Function>
@@ -94,21 +97,22 @@
             <Parameter Name="QId" Mode="InOut" Type="Int32" />
             <Parameter Name="error" Mode="InOut" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="OS_SubjektPost">
-            <Parameter Name="SubjectId" Mode="In" Type="String" />
-            <Parameter Name="Name2" Mode="In" Type="String" />
-            <Parameter Name="Address" Mode="In" Type="String" />
-            <Parameter Name="Post" Mode="In" Type="String" />
-            <Parameter Name="Country" Mode="In" Type="String" />
-            <Parameter Name="Code" Mode="In" Type="String" />
-            <Parameter Name="RegNo" Mode="In" Type="String" />
-            <Parameter Name="Buyer" Mode="In" Type="String" />
-            <Parameter Name="WayOfSale" Mode="In" Type="String" />
-            <Parameter Name="Currency" Mode="In" Type="String" />
-            <Parameter Name="Supplier" Mode="In" Type="String" />
-            <Parameter Name="SuppSaleMet" Mode="In" Type="String" />
-            <Parameter Name="SuppCurr" Mode="In" Type="String" />
-            <Parameter Name="QId" Mode="InOut" Type="Int32" />
+          <FunctionImport Name="OS_FakturaPozPost">
+            <Parameter Name="DocumentId" Mode="In" Type="String" />
+            <Parameter Name="No" Mode="In" Type="Int32" />
+            <Parameter Name="Ident" Mode="In" Type="String" />
+            <Parameter Name="Qty" Mode="In" Type="Decimal" />
+            <Parameter Name="Price" Mode="In" Type="Decimal" />
+            <Parameter Name="CostDrv" Mode="In" Type="String" />
+            <Parameter Name="error" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="OS_RacunDobavljacaPozPost">
+            <Parameter Name="DocumentId" Mode="In" Type="String" />
+            <Parameter Name="No" Mode="In" Type="Int32" />
+            <Parameter Name="Ident" Mode="In" Type="String" />
+            <Parameter Name="Qty" Mode="In" Type="Decimal" />
+            <Parameter Name="Price" Mode="In" Type="Decimal" />
+            <Parameter Name="CostDrv" Mode="In" Type="String" />
             <Parameter Name="error" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="OS_FakturaPost">
@@ -122,6 +126,8 @@
             <Parameter Name="DateDoc1" Mode="In" Type="String" />
             <Parameter Name="DateVAT" Mode="In" Type="String" />
             <Parameter Name="DateDue" Mode="In" Type="String" />
+            <Parameter Name="Statement" Mode="In" Type="String" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
             <Parameter Name="error" Mode="InOut" Type="String" />
             <Parameter Name="kljuc" Mode="InOut" Type="String" />
           </FunctionImport>
@@ -136,27 +142,27 @@
             <Parameter Name="DateDoc1" Mode="In" Type="String" />
             <Parameter Name="DateVAT" Mode="In" Type="String" />
             <Parameter Name="DateDue" Mode="In" Type="String" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
             <Parameter Name="error" Mode="InOut" Type="String" />
             <Parameter Name="kljuc" Mode="InOut" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="OS_FakturaPozPost">
-            <Parameter Name="DocumentId" Mode="In" Type="String" />
-            <Parameter Name="No" Mode="In" Type="Int32" />
-            <Parameter Name="Ident" Mode="In" Type="String" />
-            <Parameter Name="Qty" Mode="In" Type="Decimal" />
-            <Parameter Name="Price" Mode="In" Type="Decimal" />
-            <Parameter Name="Dept" Mode="In" Type="String" />
-            <Parameter Name="CostDrv" Mode="In" Type="String" />
-            <Parameter Name="error" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="OS_RacunDobavljacaPozPost">
-            <Parameter Name="DocumentId" Mode="In" Type="String" />
-            <Parameter Name="No" Mode="In" Type="Int32" />
-            <Parameter Name="Ident" Mode="In" Type="String" />
-            <Parameter Name="Qty" Mode="In" Type="Decimal" />
-            <Parameter Name="Price" Mode="In" Type="Decimal" />
-            <Parameter Name="Dept" Mode="In" Type="String" />
-            <Parameter Name="CostDrv" Mode="In" Type="String" />
+          <FunctionImport Name="OS_SubjektPost">
+            <Parameter Name="SubjectId" Mode="In" Type="String" />
+            <Parameter Name="Name2" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Post" Mode="In" Type="String" />
+            <Parameter Name="Country" Mode="In" Type="String" />
+            <Parameter Name="Code" Mode="In" Type="String" />
+            <Parameter Name="RegNo" Mode="In" Type="String" />
+            <Parameter Name="Buyer" Mode="In" Type="String" />
+            <Parameter Name="WayOfSale" Mode="In" Type="String" />
+            <Parameter Name="Currency" Mode="In" Type="String" />
+            <Parameter Name="Supplier" Mode="In" Type="String" />
+            <Parameter Name="SuppSaleMet" Mode="In" Type="String" />
+            <Parameter Name="SuppCurr" Mode="In" Type="String" />
+            <Parameter Name="Clerk" Mode="In" Type="Int32" />
+            <Parameter Name="SuppClerk" Mode="In" Type="Int32" />
+            <Parameter Name="QId" Mode="InOut" Type="Int32" />
             <Parameter Name="error" Mode="InOut" Type="String" />
           </FunctionImport>
         </EntityContainer>
@@ -167,11 +173,11 @@
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="DBEntities" >
           <FunctionImportMapping FunctionImportName="OS_StrnPost" FunctionName="DBModel.Store.OS_StrnPost" />
-          <FunctionImportMapping FunctionImportName="OS_SubjektPost" FunctionName="DBModel.Store.OS_SubjektPost" />
-          <FunctionImportMapping FunctionImportName="OS_FakturaPost" FunctionName="DBModel.Store.OS_FakturaPost" />
-          <FunctionImportMapping FunctionImportName="OS_RacunDobavljacaPost" FunctionName="DBModel.Store.OS_RacunDobavljacaPost" />
           <FunctionImportMapping FunctionImportName="OS_FakturaPozPost" FunctionName="DBModel.Store.OS_FakturaPozPost" />
           <FunctionImportMapping FunctionImportName="OS_RacunDobavljacaPozPost" FunctionName="DBModel.Store.OS_RacunDobavljacaPozPost" />
+          <FunctionImportMapping FunctionImportName="OS_FakturaPost" FunctionName="DBModel.Store.OS_FakturaPost" />
+          <FunctionImportMapping FunctionImportName="OS_RacunDobavljacaPost" FunctionName="DBModel.Store.OS_RacunDobavljacaPost" />
+          <FunctionImportMapping FunctionImportName="OS_SubjektPost" FunctionName="DBModel.Store.OS_SubjektPost" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
