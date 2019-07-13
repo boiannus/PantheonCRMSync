@@ -31,6 +31,12 @@ namespace PantheonCRMSync.Controllers
                         response.Status = "OK";
                         response.Opis = "";
                     }
+                    else if (error.Value.ToString() == "Exists")
+                    {
+                        response.Id = qid.Value.ToString();
+                        response.Status = "Customer exists";
+                        response.Opis = "Postoji kupac sa tim nazivom";
+                    }
                     else
                     {
                         response.Id = "";

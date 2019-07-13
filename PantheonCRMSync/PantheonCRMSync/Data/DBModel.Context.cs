@@ -111,7 +111,7 @@ namespace PantheonCRMSync.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OS_RacunDobavljacaPozPost", documentIdParameter, noParameter, identParameter, qtyParameter, priceParameter, costDrvParameter, error);
         }
     
-        public virtual int OS_FakturaPost(string cRMDocumentId, string docType, string date, string receiver, string currency, Nullable<decimal> fXRate, string doc1, string dateDoc1, string dateVAT, string dateDue, string statement, Nullable<int> userId, ObjectParameter error, ObjectParameter kljuc)
+        public virtual int OS_FakturaPost(string cRMDocumentId, string docType, string date, string receiver, string currency, Nullable<decimal> fXRate, string doc1, string dateDoc1, string doc2, string dateDoc2, string dateVAT, string dateDue, string statement, Nullable<int> userId, ObjectParameter error, ObjectParameter kljuc)
         {
             var cRMDocumentIdParameter = cRMDocumentId != null ?
                 new ObjectParameter("CRMDocumentId", cRMDocumentId) :
@@ -145,6 +145,14 @@ namespace PantheonCRMSync.Data
                 new ObjectParameter("DateDoc1", dateDoc1) :
                 new ObjectParameter("DateDoc1", typeof(string));
     
+            var doc2Parameter = doc2 != null ?
+                new ObjectParameter("Doc2", doc2) :
+                new ObjectParameter("Doc2", typeof(string));
+    
+            var dateDoc2Parameter = dateDoc2 != null ?
+                new ObjectParameter("DateDoc2", dateDoc2) :
+                new ObjectParameter("DateDoc2", typeof(string));
+    
             var dateVATParameter = dateVAT != null ?
                 new ObjectParameter("DateVAT", dateVAT) :
                 new ObjectParameter("DateVAT", typeof(string));
@@ -161,7 +169,7 @@ namespace PantheonCRMSync.Data
                 new ObjectParameter("UserId", userId) :
                 new ObjectParameter("UserId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OS_FakturaPost", cRMDocumentIdParameter, docTypeParameter, dateParameter, receiverParameter, currencyParameter, fXRateParameter, doc1Parameter, dateDoc1Parameter, dateVATParameter, dateDueParameter, statementParameter, userIdParameter, error, kljuc);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OS_FakturaPost", cRMDocumentIdParameter, docTypeParameter, dateParameter, receiverParameter, currencyParameter, fXRateParameter, doc1Parameter, dateDoc1Parameter, doc2Parameter, dateDoc2Parameter, dateVATParameter, dateDueParameter, statementParameter, userIdParameter, error, kljuc);
         }
     
         public virtual int OS_RacunDobavljacaPost(string cRMDocumentId, string docType, string date, string issuer, string currency, Nullable<decimal> fXRate, string doc1, string dateDoc1, string dateVAT, string dateDue, Nullable<int> userId, ObjectParameter error, ObjectParameter kljuc)

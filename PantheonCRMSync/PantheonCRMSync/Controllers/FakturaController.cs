@@ -27,7 +27,7 @@ namespace PantheonCRMSync.Controllers
                     ObjectParameter error = new ObjectParameter("error", typeof(string));
                     ObjectParameter errorpoz = new ObjectParameter("error", typeof(string));
 
-                    db.OS_FakturaPost(f.CRMDocumentId, f.DocType, f.Date, f.Receiver, f.Currency, f.FXRate, f.Doc1, f.DateDoc1, f.DateVAT, f.DateDue, f.Statement, f.UserId, error, kljuc);
+                    db.OS_FakturaPost(f.CRMDocumentId, f.DocType, f.Date, f.Receiver, f.Currency, f.FXRate, f.Doc1, f.DateDoc1, f.Doc2, f.DateDoc2, f.DateVAT, f.DateDue, f.Statement, f.UserId, error, kljuc);
                     dokument = kljuc.Value.ToString();
                     if (error.Value.ToString() == "OK" && dokument != "")
                     {

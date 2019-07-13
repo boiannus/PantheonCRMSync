@@ -14,6 +14,8 @@
           <Parameter Name="FXRate" Type="decimal" Mode="In" />
           <Parameter Name="Doc1" Type="varchar" Mode="In" />
           <Parameter Name="DateDoc1" Type="varchar" Mode="In" />
+          <Parameter Name="Doc2" Type="varchar" Mode="In" />
+          <Parameter Name="DateDoc2" Type="varchar" Mode="In" />
           <Parameter Name="DateVAT" Type="varchar" Mode="In" />
           <Parameter Name="DateDue" Type="varchar" Mode="In" />
           <Parameter Name="Statement" Type="varchar" Mode="In" />
@@ -124,6 +126,8 @@
             <Parameter Name="FXRate" Mode="In" Type="Decimal" />
             <Parameter Name="Doc1" Mode="In" Type="String" />
             <Parameter Name="DateDoc1" Mode="In" Type="String" />
+            <Parameter Name="Doc2" Mode="In" Type="String" />
+            <Parameter Name="DateDoc2" Mode="In" Type="String" />
             <Parameter Name="DateVAT" Mode="In" Type="String" />
             <Parameter Name="DateDue" Mode="In" Type="String" />
             <Parameter Name="Statement" Mode="In" Type="String" />
